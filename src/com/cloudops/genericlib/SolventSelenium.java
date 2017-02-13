@@ -64,6 +64,18 @@ public class SolventSelenium {
 		
 	}
 	
+	public static void LoginWithInvalidCred(String username, String password){
+		LaunchBrowser();
+		SignUpPage.getLoginLink().click();
+		waitForElementToAppear(LoginPage.getLoginFormHeader());
+		LoginPage.getUsername().sendKeys(username);
+		LoginPage.getPassword().sendKeys(password);
+		LoginPage.getLoginButton().submit();
+		//waitForElementToAppear(driver.findElement(By.xpath("//div[@id='log-out']//button//div[@class='label']")));
+		//waitForPageToLoad();
+		
+	}
+	
 	public static void signUp(String companyName, String email, String phoneNumber, String password, Currency currency){
 		
 		LaunchBrowser();
@@ -74,6 +86,7 @@ public class SolventSelenium {
 		SignUpPage.getPasswordConfirmationField().sendKeys(password);
 		SignUpPage.selectCurrency(currency);
 		SignUpPage.getRegisterButton().submit();
+		waitForPageToLoad();
 		
 	}
 
@@ -103,6 +116,7 @@ public class SolventSelenium {
 		
 		driver.findElement(By.xpath("//div[@id='log-out']//button//div[@class='label']")).click();
 		driver.findElement(By.xpath("//div[@id='log-out']//ul/li//button[text()='Logout']")).click();
+		waitForElementToAppear(driver.findElement(By.xpath("//div[@id='logoutModal']//a[@href='/logout']")));
 		driver.findElement(By.xpath("//div[@id='logoutModal']//a[@href='/logout']")).click();
 		waitForElementToAppear(SignUpPage.getLoginLink());
 		

@@ -14,7 +14,7 @@ public class FirstTimeRecharge extends SolventSelenium {
 	
 	Login("banafalhemant@gmail.com", "password");
 	MainDashboard.clickOnGetStartedButton();
-	//waitForPageToLoad();
+	waitForPageToLoad();
 	DocuSign.signDocument();
 	
 	}
